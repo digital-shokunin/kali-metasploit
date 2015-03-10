@@ -22,10 +22,12 @@ RUN curl -L https://get.rvm.io -o rvm-install.sh
 RUN chmod +x rvm-install.sh
 RUN ./rvm-install.sh
 RUN source /usr/local/rvm/src/rvm/scripts/rvm
-RUN "echo 'source /usr/local/rvm/src/rvm/scripts/rvm' >> ~/.bashrc"
-RUN source ~/.bashrc
-RUN rvm install 2.1.5
-RUN rvm use 2.1.5 --default
+RUN touch /.bashrc
+RUN touch /root/.bashrc
+RUN echo 'source /usr/local/rvm/src/rvm/scripts/rvm' >> /root/.bashrc
+RUN source /root/.bashrc
+RUN /usr/local/rvm/bin/rvm install 2.1.5
+RUN /usr/local/rvm/bin/rvm use 2.1.5 --default
 
 ENV HOME="/root"
 
