@@ -11,9 +11,9 @@ RUN bash -c 'echo "deb http://mirrors.aliyun.com/kali kali main" > /etc/apt/sour
 RUN apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 7D8D0BF6
 
 # Install metasploit
-RUN apt-get -y update ; apt-get -y --force-yes install libnokogiri-ruby metasploit-framework curl
+RUN apt-get -y update ; apt-get -y --force-yes install debian-archive-keyring kali-archive-keyring libnokogiri-ruby metasploit-framework curl debian-archive-keyring kali-archive-keyring
 
-RUN curl -L https://get.rvm.io | bash -s stable
+RUN "curl -L https://get.rvm.io | bash -s stable"
 RUN source ~/.rvm/scripts/rvm
 RUN echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
 RUN source ~/.bashrc
