@@ -2,7 +2,7 @@
 #
 # Use Kali the latest Kali Linux base image
 #FROM linux/kali
-FROM linuxkonsult/kali
+FROM e3rp4y/kali-metasploit
 MAINTAINER Tom Eklöf "tom@linux-konsult.com"
 
 ADD ./init.sh /init.sh
