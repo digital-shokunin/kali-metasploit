@@ -7,12 +7,11 @@ MAINTAINER Tom Eklöf "tom@linux-konsult.com"
 
 ADD ./init.sh /init.sh
 
-# update sources.list to aliyun
 RUN bash -c 'echo "deb http://mirrors.aliyun.com/kali kali main" > /etc/apt/sources.list'
 RUN apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 7D8D0BF6
 
 # Install metasploit
-RUN apt-get -y update ; apt-get -y --force-yes install libnokogiri-ruby metasploit-framework
+RUN apt-get -y update ; apt-get -y --force-yes install libnokogiri-ruby metasploit-framework curl
 
 RUN curl -L https://get.rvm.io | bash -s stable
 RUN source ~/.rvm/scripts/rvm
