@@ -5,21 +5,25 @@
 FROM e3rp4y/kali-metasploit
 MAINTAINER Tom Eklöf "tom@linux-konsult.com"
 
+EXPOSE 443
+
 ADD ./init.sh /init.sh
+
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN bash -c 'echo "deb http://mirrors.aliyun.com/kali kali main" > /etc/apt/sources.list'
 RUN apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 7D8D0BF6
 
 # Install metasploit
-RUN apt-get -y update ; apt-get -y --force-yes install debian-archive-keyring kali-archive-keyring libnokogiri-ruby metasploit-framework curl debian-archive-keyring kali-archive-keyring
+RUN apt-get -y update ; apt-get -y --force-yes install debian-archive-keyring kali-archive-keyring libnokogiri-ruby metasploit-framework curl debian-archive-keyring kali-archive-keyring 
 
+RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 RUN "curl -L https://get.rvm.io | bash -s stable"
-RUN source ~/.rvm/scripts/rvm
-RUN echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
+RUN source /usr/local/rvm/src/rvm/scripts/rvm
+RUN "echo "source /usr/local/rvm/src/rvm/scripts/rvm" >> ~/.bashrc"
 RUN source ~/.bashrc
 RUN rvm install 2.1.5
 RUN rvm use 2.1.5 --default
-RUN ruby -v
 
 ENV HOME="/root"
 
