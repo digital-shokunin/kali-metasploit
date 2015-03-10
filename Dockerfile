@@ -20,11 +20,13 @@ RUN apt-get -y update ; apt-get -y --force-yes install debian-archive-keyring ka
 RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 RUN curl -L https://get.rvm.io -o rvm-install.sh
 RUN chmod +x rvm-install.sh
-RUN ./rvm-install.sh -s stable --autolibs=enabled --ruby=2.1.5
+RUN ./rvm-install.sh 
 RUN source /usr/local/rvm/src/rvm/scripts/rvm
 RUN touch /root/.bashrc
 RUN echo 'source /usr/local/rvm/src/rvm/scripts/rvm' >> /root/.bashrc
 RUN source /root/.bashrc
+RUN /usr/local/rvm/bin/rvm install 2.1.5
+RUN /usr/local/rvm/bin/rvm use 2.1.5 --default
 RUN rm -f /usr/local/bin/rake
 RUN ln -s /usr/local/rvm/src/ruby-2.1.5/bin/rake /usr/local/bin/rake
 RUN rm -f /usr/bin/ruby
