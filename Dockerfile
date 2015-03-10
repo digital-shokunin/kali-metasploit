@@ -1,7 +1,8 @@
 # Docker container with metasploit.
 #
 # Use Kali the latest Kali Linux base image
-FROM linux/kali
+#FROM linux/kali
+FROM linuxkonsult/kali
 MAINTAINER Tom Eklöf "tom@linux-konsult.com"
 
 ADD ./init.sh /init.sh
