@@ -18,7 +18,9 @@ RUN apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 7D8D0BF6
 RUN apt-get -y update ; apt-get -y --force-yes install debian-archive-keyring kali-archive-keyring libnokogiri-ruby metasploit-framework curl debian-archive-keyring kali-archive-keyring 
 
 RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-RUN "curl -L https://get.rvm.io | bash -s stable"
+RUN curl -L https://get.rvm.io -o rvm-install.sh
+RUN chmod +x rvm-install.sh
+RUN ./rvm-install.sh
 RUN source /usr/local/rvm/src/rvm/scripts/rvm
 RUN "echo "source /usr/local/rvm/src/rvm/scripts/rvm" >> ~/.bashrc"
 RUN source ~/.bashrc
