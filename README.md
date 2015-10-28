@@ -14,3 +14,12 @@ Will run msfupdate and then present you with msfconsole.
 If you do not need to run a handler, just remove the -p 443:443
 
     docker run -i -t digitalshokunin/kali-metasploit
+
+
+Since I wrote this Tom Steele has written a better maintained version and given a talk on it. This is probably better than mine and updated more recently.
+
+Talk: [Pentesting with Docker](https://www.youtube.com/watch?v=gC_vm1wc-AY)
+
+Dockerfile: [Github location](https://github.com/tomsteele/dockerfiles/tree/master/metasploit) 
+
+Docker Hub: [tomsteele\metasploit](https://hub.docker.com/r/tomsteele/metasploit/)
