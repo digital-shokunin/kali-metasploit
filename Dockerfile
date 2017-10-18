@@ -2,14 +2,22 @@
 #
 # Use Kali the latest Kali Linux base image
 #FROM linux/kali
-FROM e3rp4y/kali-metasploit
-MAINTAINER Tom Eklöf "tom@linux-konsult.com"
+FROM kalilinux/kali-linux-docker
+MAINTAINER David Mitchell "david.mitchell@digital-shokunin.net"
 
 EXPOSE 443
 
 ADD ./init.sh /init.sh
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" > /etc/apt/sources.list
+RUN apt-get -y update && apt-get -y dist-upgrade && apt-get clean
+
+RUN echo "deb-src http://http.kali.org/kali kali-rolling main contrib non-free" >> /etc/apt/sources.list
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get -y update && apt-get -y dist-upgrade && apt-get clean
 
 RUN bash -c 'echo "deb http://mirrors.aliyun.com/kali kali main" > /etc/apt/sources.list'
 RUN apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 7D8D0BF6
@@ -36,4 +44,4 @@ ENV HOME="/root"
 
 # Attach this container to stdin when running, like this:
 # docker run -t -i linux/kali/metasploit
-CMD /init.sh
+CMD ["/init.sh;","/bin/bash"]
