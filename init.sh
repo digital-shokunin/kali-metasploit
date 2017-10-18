@@ -2,4 +2,5 @@
 
 # /etc/init.d/postgresql start
 /usr/bin/msfupdate
-/usr/bin/msfconsole	
+echo "Run msfconsole to run Metasploit"
+#/usr/bin/msfconsole	
