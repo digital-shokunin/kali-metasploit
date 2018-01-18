@@ -23,7 +23,8 @@ RUN bash -c 'echo "deb http://mirrors.aliyun.com/kali kali main" > /etc/apt/sour
 RUN apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 7D8D0BF6
 
 # Install metasploit
-RUN apt-get -y update ; apt-get -y --force-yes install debian-archive-keyring kali-archive-keyring libnokogiri-ruby metasploit-framework curl debian-archive-keyring kali-archive-keyring 
+RUN apt-get -y update 
+RUN apt-get -y --force-yes install debian-archive-keyring kali-archive-keyring libnokogiri-ruby metasploit-framework curl debian-archive-keyring kali-archive-keyring 
 
 RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 RUN curl -L https://get.rvm.io -o rvm-install.sh
